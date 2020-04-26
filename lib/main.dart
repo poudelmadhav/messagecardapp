@@ -22,7 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String message = "OK";
+  String message = "";
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +54,11 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: TextField(
               maxLength: 30,
+              onChanged: (String newValue) {
+                setState(() {
+                  message = newValue;
+                });
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Your message",

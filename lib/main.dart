@@ -23,11 +23,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String message = "";
+  Color themeColor = Colors.red;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: themeColor,
         title: Text("Message Card App"),
       ),
       body: ListView(
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: Container(
               height: 260.0,
-              color: Colors.red,
+              color: themeColor,
               child: Center(
                 child: Text(
                   message,
@@ -65,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                 helperText: "You can write your message here",
                 prefixIcon: Icon(
                   Icons.edit,
-                  color: Colors.red,
+                  color: themeColor,
                 ),
               ),
             ),
@@ -74,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.red,
+              color: themeColor,
               child: Text(
                 "Clear the text",
                 style: TextStyle(color: Colors.white),
@@ -87,18 +89,46 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        themeColor = Colors.red;
+                      });
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: themeColor,
+                    ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.blue,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        themeColor = Colors.blue;
+                      });
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.blue,
+                    ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.green,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        themeColor = Colors.green;
+                      });
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.green,
+                    ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.orange,
-                  )
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        themeColor = Colors.orange;
+                      });
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.orange,
+                    ),
+                  ),
                 ],
               ),
             ),

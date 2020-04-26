@@ -8,9 +8,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Message Card App",
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Message Card App"),
+        ),
+        body: Center(
+          child: TextField(
+            maxLength: 30,
+            autofocus: true,
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: "Your message",
+              helperText: "You can write your message here",
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.edit),
+            ),
+          ),
         ),
       ),
     );

@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String message = "";
   Color themeColor = Colors.red;
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: TextField(
               maxLength: 30,
+              controller: controller,
               onChanged: (String newValue) {
                 setState(() {
                   message = newValue;
@@ -63,6 +65,12 @@ class _HomePageState extends State<HomePage> {
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2.0,
+                    color: themeColor,
+                  )
+                ),
                 hintText: "Your message",
                 helperText: "You can write your message here",
                 prefixIcon: Icon(
@@ -75,7 +83,9 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.clear();
+              },
               color: themeColor,
               child: Text(
                 "Clear the text",

@@ -22,7 +22,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String message = "";
+  static String greet() {
+    String greet;
+    DateTime now = DateTime.now();
+    int hour = now.hour;
+    int minute = now.minute;
+    if (hour < 12) {
+      greet = "Good Morning!";
+    } else if (hour < 18) {
+      greet = "Good Afternoon!";
+    } else {
+      greet = "Good Evening!";
+    }
+    String minutes = (minute < 10 ? "0" + minute.toString() : minute.toString());
+
+    return "It's now " + hour.toString() + ":" + minutes + ". \n" + greet;
+  }
+
+  String message = greet();
   Color themeColor = Colors.red;
   TextEditingController controller = TextEditingController();
 
